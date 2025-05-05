@@ -3,19 +3,23 @@ import { UserModel, ExerciseModel, WorkoutModel } from "../models/db.mjs";
 const loadWorkouts = async (req, res) => {
     const {username} = req.query;
 
+    console.log(username)
     const foundUser = await UserModel.findOne({username}).populate('workouts');
     const workouts = foundUser.workouts;
-
-    console.log(workouts);
 
     return res.status(200).json({ workouts });
 }
 
 const loadWorkout = async (req, res) => {
-    const {username, workout} = req.query;
+    const {username, workoutId} = req.query;
 
-    const foundUser = await UserModel.findOne({username});
-    const selectedWorkout = await WorkoutModel.findOne({_id: foundUser.workouts[workout]});
+    console.log(username)
+    console.log(workoutId)
+
+    const foundUser = await UserModel.findOne({username}).populate('workouts');
+    const selectedWorkout = await WorkoutModel.findById(workoutId).populate("exercises");
+
+    console.log(selectedWorkout)
 
     return res.status(200).json({ selectedWorkout });
 }

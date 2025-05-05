@@ -14,6 +14,9 @@ const handleLogin = async (req, res) => {
         return res.sendStatus(401); // unauthorized
     }
 
+    console.log("user logged in: ")
+    console.log(foundUser.username)
+
     // if password matches
     if (await bcrypt.compare(password, foundUser.password)) {
         return res.status(200).json({ 'success': 'password matches' });
