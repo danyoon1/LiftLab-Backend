@@ -11,6 +11,7 @@ import credentials from './middleware/credentials.mjs';
 import registerRoute from './routes/register.mjs';
 import authRoute from './routes/auth.mjs';
 import workoutRoute from './routes/workout.mjs';
+import dietRoute from './routes/diet.mjs';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -37,4 +38,5 @@ app.use(credentials);
 // routes
 app.use('/register', registerRoute);
 app.use('/auth', authRoute);
+app.use('/diet', dietRoute);
 app.use('/workout', workoutRoute);
