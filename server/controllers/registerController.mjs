@@ -3,11 +3,10 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 const handleRegistration = async (req, res) => {
-    const { user, password, email } = req.body;
+    const { user, password } = req.body;
 
     const duplicateUser = await UserModel.findOne({ username: user });
-    const duplicateEmail = await UserModel.findOne({ email });
-    if (duplicateUser || duplicateEmail) {
+    if (duplicateUser) {
         return res.sendStatus(409);
     }
 
@@ -18,8 +17,7 @@ const handleRegistration = async (req, res) => {
 
         const newUser = await UserModel.create({
             username: user,
-            password: hashedPwd,
-            email
+            password: hashedPwd
         });
 
         res.status(201).json({ 'success': `${user} registered` });

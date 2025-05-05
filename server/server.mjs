@@ -32,9 +32,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(credentials);
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // routes
 app.use('/register', registerRoute);
 app.use('/auth', authRoute);
-app.use('workout', workoutRoute);
+app.use('/workout', workoutRoute);

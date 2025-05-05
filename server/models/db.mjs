@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-    email: {
+    username: {
         type: String,
         required: true
     },
@@ -32,6 +32,10 @@ const ExerciseSchema = new mongoose.Schema({
 
 const WorkoutSchema = new mongoose.Schema({
     name: {
+        type: String,
+        required: true
+    },
+    difficulty: {
         type: String,
         required: true
     },

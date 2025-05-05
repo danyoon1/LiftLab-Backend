@@ -1,8 +1,10 @@
 import express from 'express';
-import { loadExercises, updateWorkout } from '../controllers/workoutController.mjs';
+import { createWorkout, loadWorkout, loadWorkouts, updateWorkout } from '../controllers/workoutController.mjs';
 const router = express.Router();
 
-router.get('/load', loadExercises);
-router.post('/update', updateWorkout);
+router.get('/loadWorkouts', loadWorkouts);
+router.get('/loadWorkout', loadWorkout);
+router.post('/updateWorkout', updateWorkout);
+router.post('/createWorkout', createWorkout);
 
 export default router;
