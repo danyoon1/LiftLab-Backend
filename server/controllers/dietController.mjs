@@ -6,7 +6,7 @@ const loadDiets = async (req, res) => {
     console.log('loading diets')
 
     console.log(username)
-    const foundUser = await UserModel.findOne({username}).populate('diets');
+    const foundUser = await UserModel.findOne({username}).populate("diets", null, null, { strictPopulate: false });
     const diets = foundUser.diets;
 
     return res.status(200).json({ diets });
@@ -18,8 +18,8 @@ const loadDiet = async (req, res) => {
     console.log(username)
     console.log(dietId)
 
-    const foundUser = await UserModel.findOne({username}).populate('diets');
-    const selectedDiet = await DietModel.findById(dietId).populate("diets");
+    const foundUser = await UserModel.findOne({username}).populate("diets", null, null, { strictPopulate: false });
+    const selectedDiet = await DietModel.findById(dietId).populate("diets", null, null, { strictPopulate: false });
 
     console.log(selectedDiet)
 

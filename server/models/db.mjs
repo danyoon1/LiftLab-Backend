@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
     diets: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Diet'
-    }]
+      }]
 });
 
 const ExerciseSchema = new mongoose.Schema({
